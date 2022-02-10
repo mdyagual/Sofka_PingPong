@@ -1,5 +1,5 @@
 (function(){
-    var self.Board = function (w,h){
+    self.Board = function (w,h){
         this.width = w;
         this.height = h;
 
@@ -36,6 +36,6 @@ window.addEventListener("load",main);
 
 function main(){
     var board = new Board(800,400);
-    var canvas = document.getElementById('canvas',board);
-    var board_view = new BoardView ();
+    var canvas = document.getElementById('canvas');
+    var board_view = new BoardView (canvas,board);
 }
