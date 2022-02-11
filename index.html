@@ -7,11 +7,30 @@
         canvas {
             border:solid;
         }
+        #contenido {
+            width: 800px; margin: 0 auto;
+            color:darkblue;
+            font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            background-color: lightgrey;
+            
+        }
     </style>
 </head>
-<body>
-    <h1>Ping pong pa' Sofka</h1>
+<body id="contenido">
+    <h1>PONG (1972)</h1>
+    <h2>Para iniciar/pausar el juego, se debe presionar la barra espaciadora. Si desea reiniciar el juego, presione F5</h2>
+    <h2>Teclas: </h2>
+    <h3>Barra izquierda: Arriba ( W ) | Abajo ( S ) ---- Barra derecha: Arriba ( ↑ ) | Abajo ( ↓ ) </h3>
     <canvas id="canvas"></canvas>
+
+    <p>
+        Limitaciones: <br>
+        -La pelota solo rebota contra las barras. A futuro se puede mejorar para que rebote en el borde superior e inferior. <br>
+        -Se pueden hacer mejoras estéticas para recrear el estilo del juego original.
+    </p>
+      
+    <p>Este es mi primer programa en javascript. Hecho con mucho cariño por mdyagual para Sofka U(◕‿◕✿) </p>
+
     <script src="main.js"></script>
 </body>
 </html>
