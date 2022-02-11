@@ -1,3 +1,4 @@
+//Tablero
 (function(){
     self.Board = function (w,h){
         this.width = w;
@@ -20,6 +21,7 @@
     }
 })();
 
+//Pelotita
 (function(){
     self.Ball = function (x,y,radius,board){
         this.x = x;
@@ -72,6 +74,7 @@
     }
 })();
 
+//Barras ping y pong
 (function (){
     self.Bar = function(x,y,width,height,board){
         this.x = x;
@@ -104,6 +107,7 @@
 
 })();
 
+//Escena donde va el tablero con los elementos del juego
 (function(){
     self.BoardView = function (canvas,board){
         this.canvas = canvas;
@@ -143,11 +147,13 @@
             
         }
     }
+
+    //Configuración de los golpes entre barras
     function hit(a,b){
         var hit = false;
-        //H
+        //horizontal
         if(b.x + b.width >= a.x && b.x < a.x + a.width){
-            //V
+            //vertical
             if(b.y + b.height >= a.y && b.y < a.y + a.height){
                 hit = true;
             }
@@ -177,7 +183,7 @@
 
     }
 
-    //Dibujar los elementos
+    //Dibujar los elementos: Las barras y la pelota
     function draw(ctx,element){
         //if(element !== null && element.hasOwnProperty("kind")){
             switch(element.kind){
@@ -204,10 +210,8 @@ var bar_2 = new Bar (735,100,40,100,board);
 var canvas = document.getElementById('canvas');
 var board_view = new BoardView (canvas,board);
 var ball = new Ball (350,100,10,board);
-//window.requestAnimationFrame(main);
-//No rentable
-//setInterval(main,100);
 
+//Gestion de movimiento de teclas
 document.addEventListener("keydown",function(ev){
     
     if(ev.keyCode ==38){
@@ -223,19 +227,19 @@ document.addEventListener("keydown",function(ev){
         ev.preventDefault();
         bar_2.up();
     }else if(ev.keyCode == 32){
-        //ev.preventDefault();
+        ev.preventDefault();
         board.playing =!board.playing;
 
     }
-    //console.log(bar_1.toString());
 });
 
-//self.addEventListener("load",main);
+//Movimiento de la pelota
 window.requestAnimationFrame(controller);
 setTimeout(function(){
     ball.direction = -1;
-},3000)
+},4000)
 
+//Controlador de la dinámica del juego
 function controller(){  
     board_view.play();
     window.requestAnimationFrame(controller);
