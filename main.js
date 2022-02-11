@@ -219,16 +219,16 @@ document.addEventListener("keydown",function(ev){
     
     if(ev.keyCode ==38){
         ev.preventDefault();
-        bar_1.up();
+        bar_2.up();
     }else if(ev.keyCode==40){
         ev.preventDefault();
-        bar_1.down();
+        bar_2.down();
     }else if(ev.keyCode==83){
         ev.preventDefault();
-        bar_2.down();
+        bar_1.down();
     }else if(ev.keyCode==87){
         ev.preventDefault();
-        bar_2.up();
+        bar_1.up();
     }else if(ev.keyCode == 32){
         ev.preventDefault();
         board.playing =!board.playing;
