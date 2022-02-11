@@ -7,16 +7,17 @@
         this.game_over = false;
         this.bars = [];
         this.ball = null;
+        this.playing = false;
     }
 
     self.Board.prototype = {
         get elements(){
+            //Hack para que se muevan las barras
             var elements = this.bars.map(function(bar){return bar;});
             elements.push(this.ball);
             return elements;
         }
     }
-
 })();
 
 (function(){
@@ -25,13 +26,22 @@
         this.y = y;
         this.radius = radius;
         
-        this.speed_x = 0;
+        this.speed_x = 3;
         this.speed_y = 0;
 
         this.board = board;
 
+        this.direction = 1;
+
         board.ball =this;
-        this.kind = "circle";
+        this.kind = "circle";        
+    }
+
+    self.Ball.prototype = {
+        move: function(){
+            this.x += (this.speed_x * this.direction);
+            this.y += (this.speed_y);
+        }
     }
 })();
 
@@ -88,8 +98,12 @@
         },
 
         play: function(){
-            this.clean();
-            this.draw();
+            if(this.board.playing){
+                this.clean();
+                this.draw();
+                this.board.ball.move();
+            }
+            
         }
     }
     //Dibujar los elementos
@@ -124,21 +138,32 @@ var ball = new Ball (350,100,10,board);
 //setInterval(main,100);
 
 document.addEventListener("keydown",function(ev){
-    ev.preventDefault();
+    
     if(ev.keyCode ==38){
+        ev.preventDefault();
         bar_1.up();
     }else if(ev.keyCode==40){
+        ev.preventDefault();
         bar_1.down();
     }else if(ev.keyCode==83){
+        ev.preventDefault();
         bar_2.down();
     }else if(ev.keyCode==87){
+        ev.preventDefault();
         bar_2.up();
+    }else if(ev.keyCode == 32){
+        ev.preventDefault();
+        board.playing =!board.playing;
+
     }
     //console.log(bar_1.toString());
 });
 
 //self.addEventListener("load",main);
 window.requestAnimationFrame(controller);
+setTimeout(function(){
+    ball.direction = -1;
+},3000)
 
 function controller(){  
     board_view.play();
