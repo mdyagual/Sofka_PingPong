@@ -1,4 +1,4 @@
-//Tablero
+//----------------------------------Tablero------------------------------
 (function(){
     self.Board = function (w,h){
         this.width = w;
@@ -21,8 +21,9 @@
     }
 })();
 
-//Pelotita
+//----------------------------------Pelotita------------------------------------
 (function(){
+    //Atributos para la pelota
     self.Ball = function (x,y,radius,board){
         this.x = x;
         this.y = y;
@@ -42,7 +43,7 @@
         board.ball =this;
         this.kind = "circle";        
     }
-
+    //Gestión relacionada a la pelota
     self.Ball.prototype = {
         move: function(){
             this.x += (this.speed_x * this.direction);
@@ -74,7 +75,7 @@
     }
 })();
 
-//Barras ping y pong
+//--------------------------------Barras ping y pong----------------------------------
 (function (){
     self.Bar = function(x,y,width,height,board){
         this.x = x;
@@ -91,7 +92,7 @@
 
 
     }
-
+    //Gestión relacionada a las barras
     self.Bar.prototype={
         down: function(){
             this.y += this.speed;
@@ -107,7 +108,7 @@
 
 })();
 
-//Escena donde va el tablero con los elementos del juego
+//--------------------Escena donde va el tablero con los elementos del juego----------------------
 (function(){
     self.BoardView = function (canvas,board){
         this.canvas = canvas;
@@ -116,6 +117,8 @@
         this.board = board;
         this.ctx=canvas.getContext("2d");
     }
+
+    //gestión de la escena
     self.BoardView.prototype ={
         clean: function(){
             this.ctx.clearRect(0,0,this.board.width,this.board.height);
@@ -211,7 +214,7 @@ var canvas = document.getElementById('canvas');
 var board_view = new BoardView (canvas,board);
 var ball = new Ball (350,100,10,board);
 
-//Gestion de movimiento de teclas
+//--------------------------------Gestion de movimiento de teclas------------------------------
 document.addEventListener("keydown",function(ev){
     
     if(ev.keyCode ==38){
@@ -233,7 +236,7 @@ document.addEventListener("keydown",function(ev){
     }
 });
 
-//Movimiento de la pelota
+//-------------------------------Movimiento de la pelota----------------------------
 window.requestAnimationFrame(controller);
 setTimeout(function(){
     ball.direction = -1;
