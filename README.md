@@ -28,4 +28,10 @@ Práctica de laboratorio para retroalimentar los conocimientos de Javascript.
 - Por cada video se solventó bugs y se comprendió la importancia de la declaración de atributos dentro de cada elemento, así como su inicialización y posterior uso.
 - Como conclusión final, Javascript provee de forma sencilla/intermedia código para la creación de funcionalidades que van desde la creación de elementos, interactuar con ellos por medio del teclado y animarlos entre sí.
 
+# Preguntas
+- ¿Para qué sirven las funciones anónimas? Permite asignar un nombre a un conjunto de instrucciones que tengamos que ejecutar sin necesidad de asociarlo, pero se almacena en memoria.
+- ¿A qué hace alusión la palabra reservada 'this' dentro del desarrollo de la práctica? Se refiere a un objeto global, ya sea en modo estricto o no.
+- ¿Qué sucede dentro de una función expresión con invocación inmediata? Las variables que declaremos adentro serán locales a ésta función, y no existen o pueden ser accedidas fuera de ella.
+- ¿Cómo se logra animar la pelota dentro del juego? Utilizando un timer combinado con una función anónima que incia el movimiento horizontal.
+
 Este es mi primer programa en javascript. Hecho con mucho cariño por mdyagual para Sofka U(◕‿◕✿)
